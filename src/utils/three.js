@@ -1,16 +1,17 @@
 import * as THREE from "three";
-import {gsap,TweenMax,Linear,Elastic} from 'gsap'
+import { TweenMax, Linear, Elastic } from 'gsap'
 import GeometryUtils from "./GeometryUtils";
+let index = 0;
 function execute3DCode(canvasDOM) {
 
     const shapes = [
         {
-            "geoCode": new THREE.TorusKnotGeometry(10, 3, 100, 16),
+            "geoCode": new THREE.CubeGeometry(25, 25,25),
             // "color": 0x029894,
             "color": 0xffffff,
         },
         {
-            "geoCode": new THREE.DodecahedronGeometry(25, 0),
+            "geoCode": new THREE.TorusKnotGeometry(10, 3, 100, 16),
             // "color": 0x029894,
             "color": 0xffffff,
         },
@@ -30,13 +31,15 @@ function execute3DCode(canvasDOM) {
             "color": 0xffffff,
         }
     ],
-        particleCount = 2000,
-        particleSize = 1,
+    transitionShape = {
+        "geoCode": new THREE.SphereGeometry(90, 50, 50),
+        "color": 0xffffff,
+    },
+        particleCount = 10000,
+        particleSize = 0.50,
         defaultAnimationSpeed = 1,
-        morphAnimationSpeed = 18,
         color = '#FFFFFF';
 
-    // Renderer
     const renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true
@@ -45,31 +48,23 @@ function execute3DCode(canvasDOM) {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     //document.body.appendChild(renderer.domElement);
-    canvasDOM.current.appendChild(renderer.domElement);
 
-    // Ensure Full Screen on Resize
-    function fullScreen() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
+    canvasDOM.current && canvasDOM.current.appendChild(renderer.domElement);
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    // window.addEventListener('resize', fullScreen, false)
+    
 
     // Scene
     const scene = new THREE.Scene();
-    // scene.background = new THREE.Color( 0xffffff );
     // Camera and position
     const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 10000);
 
-    camera.position.x = 45;
+    camera.position.x = 70;
     camera.position.y = -45;
     camera.position.z = 45;
 
 
     // Lighting
-    const light = new THREE.AmbientLight(0xEEEEEE, 1);
+    const light = new THREE.AmbientLight(0x222222, 1);
     scene.add(light);
 
     // Particle Vars
@@ -88,20 +83,16 @@ function execute3DCode(canvasDOM) {
     loader.load(typeface, (font) => {
         Array.from(shapes).forEach((shape, idx) => {
             shapes[idx].geometry = shapes[idx].geoCode;
-            const material = new THREE.MeshLambertMaterial({
-                color: shapes[idx].color,
-                opacity: .5,
-                transparent: true,
-                wireframe: true
-            });
-            const mesh = new THREE.Mesh(shapes[idx].geometry, material);
-            //THREE.GeometryUtils.center(shapes[idx].geometry)
-            //scene.add(mesh);
             shapes[idx].particles = new THREE.Geometry();
             shapes[idx].points = GeometryUtils.randomPointsInGeometry(shapes[idx].geometry, particleCount);
             createVertices(shapes[idx].particles, shapes[idx].points)
-           // enableTrigger(shape, idx, triggers[idx]);
+            // enableTrigger(shape, idx, triggers[idx]);
         });
+
+        transitionShape.geometry=transitionShape.geoCode;
+        transitionShape.particles=new THREE.Geometry();
+        transitionShape.points=GeometryUtils.randomPointsInGeometry(transitionShape.geometry, particleCount);
+        createVertices(transitionShape.particles, transitionShape.points)
     });
 
     // Particles
@@ -124,18 +115,6 @@ function execute3DCode(canvasDOM) {
         }
     }
 
-    // function enableTrigger(trigger, idx, el) {
-    //     el.setAttribute('data-disabled', false);
-
-    //     el.addEventListener('click', () => {
-    //         morphTo(shapes[idx].particles, el.dataset.color);
-    //     })
-
-    //     if (idx == 0) {
-    //         morphTo(shapes[idx].particles, el.dataset.color);
-    //     }
-    // }
-
     let particleSystem = new THREE.Points(
         particles,
         pMaterial
@@ -147,40 +126,41 @@ function execute3DCode(canvasDOM) {
     scene.add(particleSystem);
 
     // Animate
-    const normalSpeed = (defaultAnimationSpeed / 100),
-        fullSpeed = (morphAnimationSpeed / 100)
+    // const normalSpeed = (defaultAnimationSpeed / 100);
+    const normalSpeed = (defaultAnimationSpeed / 200);
 
     let animationVars = {
         speed: normalSpeed,
         color: color,
         rotation: 100
     }
-
     function animate() {
-        particleSystem.rotation.y += animationVars.speed;
+        if(index%2===1){
+            particleSystem.rotation.y += animationVars.speed;
+        }
+        else{
+            particleSystem.rotation.y += 0.0005;
+        }
+        if(index===0){
+            camera.position.z = animationVars.rotation;
+            camera.position.y = animationVars.rotation;
+        }
+        
+        camera.lookAt(scene.position.x - 20, scene.position.y - 20, scene.position.z);
         particles.verticesNeedUpdate = true;
 
-        camera.position.z = animationVars.rotation;
-        camera.position.y = animationVars.rotation;
-        camera.lookAt(scene.position.x - 20, scene.position.y - 20, scene.position.z);
-
         particleSystem.material.color = new THREE.Color(animationVars.color);
-
         window.requestAnimationFrame(animate);
         renderer.render(scene, camera);
-
     }
 
     animate();
 
     function morphTo(newParticles, color = '#FFFFFF') {
-
         TweenMax.to(animationVars, 2, {
             ease: Linear.easeNone,
             color: color
         });
-
-        particleSystem.material.color.setHex(color);
 
         for (let i = 0; i < particles.vertices.length; i++) {
             TweenMax.to(particles.vertices[i], 2, {
@@ -191,14 +171,50 @@ function execute3DCode(canvasDOM) {
             })
         }
     }
-    let index = 0;
-    setInterval(() => {
-        morphTo(shapes[index].particles)
+    function changeShape() {
+        // console.log(index)
+        if(index % 2 ===1){
+            morphTo(transitionShape.particles,'#488FB1')
+        }
+        else{
+            morphTo(shapes[index/2].particles,'#488FB1')
+        }
         index++;
-        if (index >= 5) {
+        if (index >= 10) {
             index = 0;
         }
         camera.zoom = 1;
-    }, 1500)
+       
+    }
+    
+    setInterval(changeShape, 4000)
+
+    // Ensure Full Screen on Resize
+    function fullScreen() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    window.addEventListener('resize', fullScreen, false)
+
+    // let move=50;
+    // function updateCamera(ev) {
+        // camera.position.x = -1.5 + window.scrollY / 250.0;
+        // camera.position.x=camera.position.x
+        // move=move+30;
+        // camera.position.x = camera.position.x - move
+    // }
+    
+    // window.addEventListener("scroll", ()=>{
+    //     console.log("working");
+    //     // changeShape();
+    //     //updateCamera();
+    // });    
+    function explodeIntoParticles(){
+        morphTo(transitionShape.particles,'#488FB1');
+    }
 }
+
 export default execute3DCode;

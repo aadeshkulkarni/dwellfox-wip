@@ -1,42 +1,90 @@
 import React from 'react'
+import Splashscreen from './common/Splashscreen';
+import analytics from '../assets/analytics.svg';
+import consulting from '../assets/consulting.svg';
+import appService from '../assets/app-services.svg';
+import integration from '../assets/integration.svg';
+import bpo from '../assets/bpo.svg';
+// import innovation from '../assets/innovation.svg';
+import staff from '../assets/staff.svg';
+import FadeInWhenVisible from './common/FadeInWhenVisible';
+import GradientContainer from './common/GradientContainer';
+// import Particles from 'react-tsparticles';
+// import particle from '../particles/particles.json'
+
+function Card({ title, description, img, index }) {
+  return (
+    <FadeInWhenVisible delay={0}>
+      <GradientContainer index={index}>
+        <div className="flex flex-col justify-center pl-8 text-white">
+          <span className="block p-2 mb-4 text-2xl tracking-wider uppercase">{title}</span>
+          <span className="p-2 text-sm leading-5 tracking-widest text-justify">{description}</span>
+          {/* <a href="#" className="p-2 underline font-extralight underline-offset-4">View more</a> */}
+        </div>
+        <div className="flex items-center justify-center">
+          <img src={img} alt={title} className="p-4 h-72" />
+        </div>
+      </GradientContainer>
+    </FadeInWhenVisible>
+  );
+}
 
 const Service = () => {
-    const services = [
-        {
-            title: 'Web development',
-            description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
-            img: 'https://media.istockphoto.com/photos/adapting-a-brand-strategy-to-suit-her-companys-target-market-picture-id1283021188?s=2048x2048'
-        },
-        {
-            title: 'Web development',
-            description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
-            img: 'https://media.istockphoto.com/photos/adapting-a-brand-strategy-to-suit-her-companys-target-market-picture-id1283021188?s=2048x2048'
-        }, 
-        {
-            title: 'Web development',
-            description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
-            img: 'https://media.istockphoto.com/photos/adapting-a-brand-strategy-to-suit-her-companys-target-market-picture-id1283021188?s=2048x2048'
-        },
-        {
-            title: 'Web development',
-            description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
-            img: 'https://media.istockphoto.com/photos/adapting-a-brand-strategy-to-suit-her-companys-target-market-picture-id1283021188?s=2048x2048'
-        }
+  const services = [
+    {
+      title: 'IT Staffing',
+      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      img: staff,
 
-    ]
-    return (
-        <section id="service" className="service-section">
-            <div className="p-2 lg:grid lg:grid-cols-3 lg:gap-4 sm-flex sm:flex-wrap sm:m-auto">
-                {services.length > 0 && services.map(service =>
-                    <div className="w-full text-white flex flex-col justify-center items-center border-2 border-gray-700 rounded-lg bg-gray-900 mb-2">
-                        {/* <img className="w-48 p-2" src={service.img} alt={service.title}/> */}
-                        <h1 className="text-xl p-2 tracking-widest">{service.title}</h1>
-                        <p className="text-md p-2 px-6 tracking-wider">{service.description}</p>
-                    </div>
-                )}
-            </div>
-        </section>
-    )
+    },
+    {
+      title: 'Automation',
+      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      img: analytics,
+
+    },
+    {
+      title: 'Technology Consulting',
+      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      img: consulting,
+
+    },
+    {
+      title: 'End-to-end Application Services',
+      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      img: appService,
+
+    },
+    {
+      title: 'Systems integration',
+      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      img: integration,
+
+    },
+    {
+      title: 'Business process outsourcing',
+      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      img: bpo,
+
+    }
+  ]
+  return (
+    <section id="service" className="w-full pt-20 overflow-y-auto bg-gray-900 bg-opacity-50">
+      <Splashscreen showText={false} />
+
+      <div className="w-11/12 m-auto z-999">
+        <h1 className="p-4 text-3xl font-light tracking-wider text-white">Our Services</h1>
+        <div className="grid grid-cols-2 gap-4">
+        {services.length > 0 && services.map((service, index) => (
+          <Card title={service.title} key={service.title} img={service.img} description={service.description} index={index} />
+        ))}
+        </div>
+      </div>
+      {/* <Particles
+        params={particle}
+      /> */}
+    </section>
+  )
 }
 
 export default Service
