@@ -1,5 +1,5 @@
 import React from 'react'
-import Splashscreen from './common/Splashscreen';
+// import Splashscreen from './common/Splashscreen';
 import analytics from '../assets/analytics.svg';
 import consulting from '../assets/consulting.svg';
 import appService from '../assets/app-services.svg';
@@ -16,7 +16,7 @@ function Card({ title, description, img, index }) {
   return (
     <FadeInWhenVisible delay={0}>
       <GradientContainer index={index}>
-        <div className="flex flex-col justify-center pl-8 text-white">
+        <div className="flex flex-col justify-center p-4 text-white lg:pl-8">
           <span className="block p-2 mb-4 text-2xl tracking-wider uppercase">{title}</span>
           <span className="p-2 text-sm leading-5 tracking-widest text-justify">{description}</span>
           {/* <a href="#" className="p-2 underline font-extralight underline-offset-4">View more</a> */}
@@ -70,11 +70,11 @@ const Service = () => {
   ]
   return (
     <section id="service" className="w-full pt-20 overflow-y-auto bg-gray-900 bg-opacity-50">
-      <Splashscreen showText={false} />
+      {/* <Splashscreen showText={false} /> */}
 
       <div className="w-11/12 m-auto z-999">
         <h1 className="p-4 text-3xl font-light tracking-wider text-white">Our Services</h1>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {services.length > 0 && services.map((service, index) => (
           <Card title={service.title} key={service.title} img={service.img} description={service.description} index={index} />
         ))}

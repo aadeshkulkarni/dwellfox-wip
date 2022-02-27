@@ -47,8 +47,8 @@ const Home = () => {
                 </div>
                 <div className="grid w-full h-screen text-gray-100 lg:grid-cols-2 lg:gap-1">
                     <div className="flex flex-col items-center justify-center">
-                    <FadeInWhenVisible once={false} delay={0}><h1 className="mt-12 mb-4 font-bold tracking-widest uppercase text-7xl lg:mt-0">You're an expert.</h1></FadeInWhenVisible>
-                    <FadeInWhenVisible once={false} delay={1}> <h1 className="mt-8 mb-4 font-bold tracking-widest uppercase text-7xl lg:mt-0">So are we</h1></FadeInWhenVisible>
+                    <FadeInWhenVisible once={false} delay={0}><h1 className="mt-12 mb-4 text-5xl font-bold tracking-widest uppercase lg:text-7xl lg:mt-0">You're an expert.</h1></FadeInWhenVisible>
+                    <FadeInWhenVisible once={false} delay={1}> <h1 className="mt-8 mb-4 text-5xl font-bold tracking-widest uppercase lg:text-7xl lg:mt-0">So are we</h1></FadeInWhenVisible>
                     <FadeInWhenVisible once={false} delay={2}><p className="p-4 font-light leading-8 tracking-widest">Find a top quality, specialized consultant today</p></FadeInWhenVisible>
                     <FadeInWhenVisible once={false} delay={3}>
                     <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex items-center justify-center"><span>Let's talk</span></motion.button>

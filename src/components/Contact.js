@@ -58,29 +58,29 @@ const Contact = () => {
             {/* <Particles
                 params={particle}
             /> */}
-            <div className="grid w-full h-full grid-cols-2 p-8">
+            <div className="grid w-full h-full grid-cols-1 lg:p-8 lg:grid-cols-2">
                 <div className="flex flex-col items-center justify-center p-4 text-gray-100 bg-transparent">
                     <SharedLayout tabs={tabs} />
                 </div>
 
-                <div className="flex flex-col items-center justify-center p-2">
-                    <h1 className="p-2 text-xl tracking-widest text-white">Let's get in touch</h1>
-                    <div className="flex flex-col w-3/5 pt-2">
+                <div className="flex flex-col items-center justify-center lg:p-2">
+                    <h1 className="text-xl tracking-widest text-white">Let's get in touch</h1>
+                    <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Name</label>
                         <input name='name' onChange={inputChanged} value={data.name} />
                         {error.name && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Name is mandatory</label>}
                     </div>
-                    <div className="flex flex-col w-3/5 pt-2">
+                    <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Email</label>
                         <input name='email' onChange={inputChanged} value={data.email} />
                         {error.email && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* email is mandatory</label>}
                     </div>
-                    <div className="flex flex-col w-3/5 pt-2">
+                    <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Subject</label>
                         <input name='subject' onChange={inputChanged} value={data.subject} />
                         {error.subject && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Subject is mandatory</label>}
                     </div>
-                    <div className="flex flex-col w-3/5 pt-2">
+                    <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Message</label>
                         <textarea name='message' onChange={inputChanged} value={data.message} rows="4"></textarea>
                         {error.message && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Message is mandatory</label>}
