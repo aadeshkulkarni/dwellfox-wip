@@ -22,7 +22,7 @@ function Card({ title, description, img, index }) {
           {/* <a href="#" className="p-2 underline font-extralight underline-offset-4">View more</a> */}
         </div>
         <div className="flex items-center justify-center">
-          <img src={img} alt={title} className="p-4 h-72" />
+          <img src={img} alt={title} className="h-48 p-4 lg:h-72" />
         </div>
       </GradientContainer>
     </FadeInWhenVisible>
@@ -73,7 +73,7 @@ const Service = () => {
       {/* <Splashscreen showText={false} /> */}
 
       <div className="w-11/12 m-auto z-999">
-        <h1 className="p-4 text-3xl font-light tracking-wider text-white">Our Services</h1>
+        <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:hidden">Our Services</h1>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {services.length > 0 && services.map((service, index) => (
           <Card title={service.title} key={service.title} img={service.img} description={service.description} index={index} />

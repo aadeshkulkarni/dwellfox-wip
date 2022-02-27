@@ -33,7 +33,7 @@ const Nav = () => {
                     </li>
                 </ul>
             </nav> :
-                <nav className="fixed top-0 left-0 z-10 flex items-center w-full p-4 text-white bg-gray-900 sm:block lg:hidden backdrop-opacity-90">
+                <nav className="fixed top-0 left-0 z-10 flex items-center w-full px-4 text-white bg-gray-900 sm:block lg:hidden backdrop-opacity-90">
                     <div className="inline-block w-2/4 p-4 text-xl tracking-widest uppercase">Dwellfox</div>
                     <div className="flex justify-end w-2/4 mr-4">
                         <svg onClick={menuClicked} fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40px" height="40px"><path d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z" /></svg>

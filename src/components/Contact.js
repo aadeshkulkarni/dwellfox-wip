@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from "framer-motion"
-import Splashscreen from './common/Splashscreen'
+// import Splashscreen from './common/Splashscreen'
 // import Particles from 'react-tsparticles';
 // import particle from '../particles/particles.json'
 import SharedLayout from './common/SharedLayout'
@@ -54,10 +54,11 @@ const Contact = () => {
     }
     return (
         <motion.section className="pt-16 bg-gray-900 bg-opacity-50" exit={{ opacity: 0 }} id="contact">
-            <Splashscreen showText={false} />
+            {/* <Splashscreen showText={false} /> */}
             {/* <Particles
                 params={particle}
             /> */}
+            <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:hidden">Contact us</h1>
             <div className="grid w-full h-full grid-cols-1 lg:p-8 lg:grid-cols-2">
                 <div className="flex flex-col items-center justify-center p-4 text-gray-100 bg-transparent">
                     <SharedLayout tabs={tabs} />

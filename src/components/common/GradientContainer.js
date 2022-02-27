@@ -39,7 +39,7 @@ const GradientContainer = ({ index, children }) => {
     //         break;
     // }
     return (
-            <div className={`rounded-xl grid grid-cols-1 gap-4 lg:grid-cols-2 lg:p-0 bg-gradient-to-r ${gradient}`}>{children}</div>
+            <div className={`rounded-xl grid grid-cols-1 gap-4 lg:grid-cols-2 lg:p-0 bg-gradient-to-r ${gradient}  bg-opacity-10 `}>{children}</div>
     )
 }
 

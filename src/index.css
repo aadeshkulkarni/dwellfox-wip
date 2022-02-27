@@ -14,7 +14,7 @@ textarea {
   @apply w-full p-1 m-2 border border-gray-300 outline-none lg:p-2;
 }
 .blueGradient {
-  @apply from-blue-900 via-blue-700 to-blue-500;
+  @apply from-blue-800 via-blue-600 to-blue-400;
 }
 .greenGradient {
   @apply from-emerald-900 via-emerald-600 to-emerald-500;
