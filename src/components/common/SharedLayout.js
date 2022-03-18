@@ -21,7 +21,7 @@ const SharedLayout = ({ tabs }) => {
                     {tabs.map((item) => (
                         <li
                             key={item.label}
-                            className={`text-xl p-4 uppercase tracking-widest font-bold cursor-pointer ${item === selectedTab ? "selected" : ""}`}
+                            className={`text-xl p-4 uppercase tracking-widest font-bold cursor-pointer ${item === selectedTab ? "selected text-primary-400" : ""}`}
                             onClick={() => setSelectedTab(item)}
                         >
                             {`${item.label}`}

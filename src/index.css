@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gradient-to-l from-gray-900 to-black;
+  /* @apply bg-gradient-to-l from-gray-900 to-gray-700; */
+  @apply bg-gray-800;
 }
 
 button {
@@ -14,7 +15,8 @@ textarea {
   @apply w-full p-1 m-2 border border-gray-300 outline-none lg:p-2;
 }
 .blueGradient {
-  @apply from-blue-800 via-blue-600 to-blue-400;
+  /* @apply from-blue-800 via-blue-600 to-blue-400; */
+  @apply text-gray-800 bg-white;
 }
 .greenGradient {
   @apply from-emerald-900 via-emerald-600 to-emerald-500;

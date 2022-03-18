@@ -69,25 +69,25 @@ const Contact = () => {
                     <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Name</label>
                         <input name='name' onChange={inputChanged} value={data.name} />
-                        {error.name && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Name is mandatory</label>}
+                        {error.name ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Name is mandatory</label>:''}
                     </div>
                     <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Email</label>
                         <input name='email' onChange={inputChanged} value={data.email} />
-                        {error.email && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* email is mandatory</label>}
+                        {error.email ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* email is mandatory</label>:''}
                     </div>
                     <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Subject</label>
                         <input name='subject' onChange={inputChanged} value={data.subject} />
-                        {error.subject && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Subject is mandatory</label>}
+                        {error.subject ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Subject is mandatory</label>:''}
                     </div>
                     <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Message</label>
                         <textarea name='message' onChange={inputChanged} value={data.message} rows="4"></textarea>
-                        {error.message && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Message is mandatory</label>}
+                        {error.message ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Message is mandatory</label>:''}
                     </div>
                     <button onClick={submitForm} >Submit</button>
-                    <div className="flex items-center justify-center w-full py-4 my-2 border-t border-gray-700">
+                    <div className="hidden w-full py-4 my-2 border-t border-gray-700">
                         <button className="flex items-center justify-between"><img src={whatsappIcon} alt="letstalk" className='inline w-6 h-6 mr-2'/> <span>Whatsapp</span></button>
                         <button className="flex items-center justify-between"><img src={mailIcon} alt="letstalk" className='inline w-6 h-6 mr-2'/> <span>Email</span></button>
                     </div>

@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './App.css';
 import About from './components/About';
 import Career from './components/Career';
+import Splashscreen from './components/Splashscreen/Splashscreen';
 import Contact from './components/Contact';
 import Home from './components/Home';
 import Nav from './components/Nav';
@@ -14,15 +15,20 @@ import execute3DCode from './utils/three'
 //   // Route
 // } from "react-router-dom";
 function App() {
+  const [splash,setSplash]=useState(true);
   const canvasRef = useRef(null);
   useEffect(() => {
-    execute3DCode(canvasRef);
-  }, [])
+    if(!splash){
+      execute3DCode(canvasRef);
+    }
+  }, [splash])
   return (
     <>
-      <div ref={canvasRef} className="absolute" id="shapes"></div>
+    {splash ? <Splashscreen setSplash={setSplash}/>:
+    <>
+    <div ref={canvasRef} className="absolute top-0 left-0" id="shapes"></div>
       {/* <Router> */}
-        <div className="absolute top-0 left-0 w-full"  >
+      <div className="absolute top-0 left-0 z-10 w-full"  >
           <Nav />
 
           {/* <AnimatePresence exitBeforeEnter> */}
@@ -40,12 +46,14 @@ function App() {
           <Career />
           <Contact />
 
-          {/* </AnimatePresence> */}
+          {/* </AnimatePresence>  */}
         </div>
         {/* <Particles
         params={particle}
       /> */}
       {/* </Router> */}
+      </>
+    }
     </>
 
   );

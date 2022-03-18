@@ -18,10 +18,10 @@ canvas{
   position:fixed;
 }
 
-body {
+/* body {
   position: relative;
   overflow:auto;
-}
+} */
 /* .app-container{
    background: url('./assets/background.jpeg') no-repeat
     center center/cover; 

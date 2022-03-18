@@ -42,6 +42,6 @@
 }
 
 .sharedLayout-window li.selected {
-  background: #222;
-  color: red;
+  background: rgba(0,0,0,0.5)
+  /* color: red; */
 }

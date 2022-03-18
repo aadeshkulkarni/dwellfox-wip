@@ -16,9 +16,9 @@ function Card({ title, description, img, index }) {
   return (
     <FadeInWhenVisible delay={0}>
       <GradientContainer index={index}>
-        <div className="flex flex-col justify-center p-4 text-white lg:pl-8">
-          <span className="block p-2 mb-4 text-2xl tracking-wider uppercase">{title}</span>
-          <span className="p-2 text-sm leading-5 tracking-widest text-justify">{description}</span>
+        <div className="flex flex-col justify-center p-4 lg:pl-8">
+          <span className="block p-2 mb-4 text-xl tracking-wider uppercase lg:text-2xl">{title}</span>
+          <span className="p-2 text-sm font-light leading-5 tracking-widest text-justify">{description}</span>
           {/* <a href="#" className="p-2 underline font-extralight underline-offset-4">View more</a> */}
         </div>
         <div className="flex items-center justify-center">
@@ -72,8 +72,8 @@ const Service = () => {
     <section id="service" className="w-full pt-20 overflow-y-auto bg-gray-900 bg-opacity-50">
       {/* <Splashscreen showText={false} /> */}
 
-      <div className="w-11/12 m-auto z-999">
-        <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:hidden">Our Services</h1>
+      <div className="w-11/12 m-auto lg:w-8/12">
+        <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700">Services</h1>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {services.length > 0 && services.map((service, index) => (
           <Card title={service.title} key={service.title} img={service.img} description={service.description} index={index} />
