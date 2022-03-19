@@ -67,8 +67,8 @@ const Career = ({setShowToast}) => {
                         <p className="p-2 text-lg text-white">Apply</p>
                         <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                             <label className="px-2 text-white">Full Name</label>
-                            <input name='fullName' autocomplete="off" onChange={inputChanged} value={data.firstName} />
-                            {error.name ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* First name is mandatory</label> : ""}
+                            <input name='fullName' autocomplete="off" onChange={inputChanged} value={data.fullName} />
+                            {error.fullName ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* First name is mandatory</label> : ""}
                         </div>
                         <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                             <label className="px-2 text-white">E-mail</label>
