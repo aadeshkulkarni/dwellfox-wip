@@ -2,11 +2,21 @@ import * as THREE from "three";
 import { TweenMax, Linear, Elastic } from 'gsap'
 import GeometryUtils from "./GeometryUtils";
 let index = 0;
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+function onPointerMove(event) {
+
+    // calculate pointer position in normalized device coordinates
+    // (-1 to +1) for both components
+    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+}
+
 function execute3DCode(canvasDOM) {
 
     const shapes = [
         {
-            "geoCode": new THREE.CubeGeometry(25, 25,25),
+            "geoCode": new THREE.CubeGeometry(25, 25, 25),
             // "color": 0x029894,
             "color": 0xffffff,
         },
@@ -31,10 +41,10 @@ function execute3DCode(canvasDOM) {
             "color": 0xffffff,
         }
     ],
-    transitionShape = {
-        "geoCode": new THREE.SphereGeometry(90, 50, 50),
-        "color": 0xffffff,
-    },
+        transitionShape = {
+            "geoCode": new THREE.SphereGeometry(90, 50, 50),
+            "color": 0xffffff,
+        },
         particleCount = 10000,
         particleSize = 0.50,
         defaultAnimationSpeed = 1,
@@ -51,7 +61,7 @@ function execute3DCode(canvasDOM) {
 
     canvasDOM.current && canvasDOM.current.appendChild(renderer.domElement);
 
-    
+
 
     // Scene
     const scene = new THREE.Scene();
@@ -89,9 +99,9 @@ function execute3DCode(canvasDOM) {
             // enableTrigger(shape, idx, triggers[idx]);
         });
 
-        transitionShape.geometry=transitionShape.geoCode;
-        transitionShape.particles=new THREE.Geometry();
-        transitionShape.points=GeometryUtils.randomPointsInGeometry(transitionShape.geometry, particleCount);
+        transitionShape.geometry = transitionShape.geoCode;
+        transitionShape.particles = new THREE.Geometry();
+        transitionShape.points = GeometryUtils.randomPointsInGeometry(transitionShape.geometry, particleCount);
         createVertices(transitionShape.particles, transitionShape.points)
     });
 
@@ -135,21 +145,32 @@ function execute3DCode(canvasDOM) {
         rotation: 100
     }
     function animate() {
-        if(index%2===1){
+        
+        if (index % 2 === 1) {
             particleSystem.rotation.y += animationVars.speed;
         }
-        else{
+        else {
             particleSystem.rotation.y += 0.0005;
         }
-        if(index===0){
+        if (index === 0) {
             camera.position.z = animationVars.rotation;
             camera.position.y = animationVars.rotation;
         }
-        
+
         camera.lookAt(scene.position.x - 20, scene.position.y - 20, scene.position.z);
         particles.verticesNeedUpdate = true;
 
         particleSystem.material.color = new THREE.Color(animationVars.color);
+        // update the picking ray with the camera and pointer position
+        raycaster.setFromCamera(pointer, camera);
+        
+        // calculate objects intersecting the picking ray
+        const intersects = raycaster.intersectObjects(scene.children,true);
+        
+        for (let i = 0; i < intersects.length; i++) {
+            intersects[i].object.material.color.set(0x00ffff);
+        }
+
         window.requestAnimationFrame(animate);
         renderer.render(scene, camera);
     }
@@ -172,20 +193,20 @@ function execute3DCode(canvasDOM) {
         }
     }
     function changeShape() {
-        if(index % 2 ===1){
-            morphTo(transitionShape.particles,'#488FB1')
+        if (index % 2 === 1) {
+            morphTo(transitionShape.particles, '#488FB1')
         }
-        else{
-            morphTo(shapes[index/2].particles,'#488FB1')
+        else {
+            morphTo(shapes[index / 2].particles, '#488FB1')
         }
         index++;
         if (index >= 10) {
             index = 0;
         }
         camera.zoom = 1;
-       
+
     }
-    
+
     setInterval(changeShape, 4000)
 
     // Ensure Full Screen on Resize
@@ -197,23 +218,11 @@ function execute3DCode(canvasDOM) {
     }
 
     window.addEventListener('resize', fullScreen, false)
+    window.addEventListener( 'pointermove', onPointerMove );
 
-    // let move=50;
-    // function updateCamera(ev) {
-        // camera.position.x = -1.5 + window.scrollY / 250.0;
-        // camera.position.x=camera.position.x
-        // move=move+30;
-        // camera.position.x = camera.position.x - move
+    // function explodeIntoParticles(){
+    //     morphTo(transitionShape.particles,'#488FB1');
     // }
-    
-    // window.addEventListener("scroll", ()=>{
-    //     console.log("working");
-    //     // changeShape();
-    //     //updateCamera();
-    // });    
-    function explodeIntoParticles(){
-        morphTo(transitionShape.particles,'#488FB1');
-    }
 }
 
 export default execute3DCode;

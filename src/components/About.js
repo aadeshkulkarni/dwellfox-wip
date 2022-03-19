@@ -11,7 +11,7 @@ const About = () => {
     return (
         <>
         <motion.section exit={{opacity:0}}  id="about" className="relative flex flex-col items-center justify-center h-screen p-4 text-white bg-transparent">
-        <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:hidden">About</h1>
+        <h1 className="p-4 text-xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:text-3xl lg:hidden">About</h1>
             <div className="block m-16"></div>
             <div className="rounded-md lg:p-8 lg:bg-opacity-60 lg:w-3/5">
                 <FadeInWhenVisible>
