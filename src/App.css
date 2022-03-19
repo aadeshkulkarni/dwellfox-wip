@@ -58,3 +58,7 @@ section {
 input {
   box-sizing: border-box;
 }
+
+.carousel .control-dots{
+  bottom:48px!important;
+}

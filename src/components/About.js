@@ -23,7 +23,7 @@ const About = () => {
                     Technology has supported us in reaching the heights of development at a super-fast pace. Our idea of establishing the best IT company has happened with the keen knowledge of our expertise. At Dwellfox, we want to be your end to end IT service organization, big enough to undertake your largest project, yet small enough to maintain the loyalty and the intimacy of a boutique firm and in turn contribute greatly to your success.</p>
                     </FadeInWhenVisible>
             </div>
-        <img src={downArrow} className="cursor-pointer absolute w-8 h-8 p-2 text-white bg-transparent border-2 border-white rounded-full bottom-8 left-1/2 hover:border" onClick={handleDown} alt="Down arrow" /> 
+        <img src={downArrow} className="absolute w-8 h-8 p-2 text-white bg-transparent border-2 border-white rounded-full cursor-pointer bottom-24 lg:bottom:12 lg:bottom-8 left-1/2 hover:border" onClick={handleDown} alt="Down arrow" /> 
         </motion.section>
         </>
     )

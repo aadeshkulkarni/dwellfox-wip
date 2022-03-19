@@ -46,6 +46,10 @@ function App() {
           <Career />
           <Contact />
 
+          <footer className="p-4 text-sm tracking-wide text-center text-white border-t border-gray-800">
+            Copyright 2022 | Dwellfox | All rights reserved
+          </footer>
+
           {/* </AnimatePresence>  */}
         </div>
         {/* <Particles
