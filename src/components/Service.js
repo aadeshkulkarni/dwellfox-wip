@@ -20,18 +20,18 @@ function Card({ title, description, img, index }) {
       <div className="flex items-center justify-center">
           <img src={img} alt={title} className="h-48 lg:h-72" />
         </div>
-        <div className="flex flex-col justify-center p-2 lg:pl-8 border-t border-gray-200 px-4">
+        <div className="flex flex-col justify-center p-2 px-4 border-t border-gray-200 lg:pl-8">
           <span className="block mb-4 text-xl uppercase lg:text-2xl">{title}</span>
           <span className="text-sm font-light leading-5 text-justify text-gray-800">{description}</span>
           {/* <a href="#" className="p-2 underline font-extralight underline-offset-4">View more</a> */}
         </div>
-        <div className="p-4 lg:pl-8 border-t border-gray-200">
+        <div className="p-4 border-t border-gray-200 lg:pl-8">
           <span>Client Rating: </span>
-          <img src={star} className="w-4 h-4 inline mx-1"/>
-          <img src={star} className="w-4 h-4 inline mx-1"/>
-          <img src={star} className="w-4 h-4 inline mx-1"/>
-          <img src={star} className="w-4 h-4 inline mx-1"/>
-          <img src={star} className="w-4 h-4 inline mx-1"/>
+          <img src={star} className="inline w-4 h-4 mx-1"/>
+          <img src={star} className="inline w-4 h-4 mx-1"/>
+          <img src={star} className="inline w-4 h-4 mx-1"/>
+          <img src={star} className="inline w-4 h-4 mx-1"/>
+          <img src={star} className="inline w-4 h-4 mx-1"/>
         </div>
         </div>
     </FadeInWhenVisible>
@@ -82,7 +82,7 @@ const Service = () => {
       {/* <Splashscreen showText={false} /> */}
 
       <div className="w-11/12 m-auto lg:w-8/12">
-        <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700">Services</h1>
+        <h1 className="p-4 text-xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:text-3xl">Services</h1>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {services.length > 0 && services.map((service, index) => (
           <Card title={service.title} key={service.title} img={service.img} description={service.description} index={index} />

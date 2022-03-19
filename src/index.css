@@ -8,7 +8,7 @@ body {
 }
 
 button {
-  @apply z-40 p-2 px-4 m-2 font-light tracking-widest text-white uppercase border-0 rounded-lg shadow-lg outline-none cursor-pointer bg-primary-600 hover:bg-primary-800;
+  @apply z-40 w-full p-2 px-4 m-2 font-light tracking-widest text-white uppercase border-0 rounded-lg shadow-lg outline-none cursor-pointer bg-primary-600 hover:bg-primary-800;
 }
 input,
 textarea {

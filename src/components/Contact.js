@@ -65,11 +65,8 @@ const Contact = ({setShowToast}) => {
     }
     return (
         <motion.section className="pt-16 bg-gray-900 bg-opacity-50" exit={{ opacity: 0 }} id="contact">
-            {/* <Splashscreen showText={false} /> */}
-            {/* <Particles
-                params={particle}
-            /> */}
-            <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:hidden">Contact us</h1>
+            
+            <h1 className="p-4 text-xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:text-3xl lg:hidden">Contact us</h1>
             <div className="grid w-full h-full grid-cols-1 lg:p-8 lg:grid-cols-2">
                 <div className="flex flex-col items-center justify-center p-4 text-gray-100 bg-transparent">
                     <SharedLayout tabs={tabs} />
@@ -97,7 +94,9 @@ const Contact = ({setShowToast}) => {
                         <textarea name='message' onChange={inputChanged} value={data.message} rows="4"></textarea>
                         {error.message ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Message is mandatory</label> : ''}
                     </div>
-                    <button onClick={submitForm} >Submit</button>
+                    <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
+                        <button onClick={submitForm} >Submit</button>
+                    </div>
                     <div className="hidden w-full py-4 my-2 border-t border-gray-700">
                         <button className="flex items-center justify-between"><img src={whatsappIcon} alt="letstalk" className='inline w-6 h-6 mr-2' /> <span>Whatsapp</span></button>
                         <button className="flex items-center justify-between"><img src={mailIcon} alt="letstalk" className='inline w-6 h-6 mr-2' /> <span>Email</span></button>

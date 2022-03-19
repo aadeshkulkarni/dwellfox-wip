@@ -57,7 +57,7 @@ const Career = ({setShowToast}) => {
             /> */}
             <motion.section exit={{ opacity: 0 }} id="career" className="pt-16">
                 {/* <Splashscreen showText={false} /> */}
-                <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:hidden">Careers</h1>
+                <h1 className="p-4 text-xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700 lg:text-3xl lg:hidden">Careers</h1>
                 <div className="grid w-full h-full text-black bg-gray-900 bg-opacity-50 lg:p-8 lg:grid-cols-2 sm:grid-cols-1 z-999">
                     <div className="flex flex-col items-center justify-center text-white">
                         <h1 className="p-4 text-3xl tracking-widest">Shine, and rise.</h1>
@@ -89,7 +89,7 @@ const Career = ({setShowToast}) => {
                             <label className="px-2 text-white">Additional Information</label>
                             <textarea name='information' onChange={inputChanged} value={data.information} className="w-full p-3 my-2 border border-gray-300 rounded-sm outline-none text-md" />
                         </div>
-                        <div className="px-4 my-2 lg:gap-4">
+                        <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                             <button onClick={submitForm}>Send Application</button>
                         </div>
                     </div>
