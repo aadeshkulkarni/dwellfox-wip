@@ -4,31 +4,17 @@ import { Carousel } from 'react-responsive-carousel';
 import { motion } from "framer-motion";
 // import Splashscreen from './common/Splashscreen'
 import FadeInWhenVisible from './common/FadeInWhenVisible'
-// import Particles from 'react-tsparticles';
-// import particle from '../particles/particles.json'
-// import whatsappIcon from '../assets/whatsapp.svg'
+import downArrow from '../assets/down-arrow.svg'
 
-// const sentence = {
-//     hidden: { opacity: 1 },
-//     visible: {
-//         opacity: 1,
-//         transition: {
-//             delay: 0.5,
-//             staggerChildren: 0.08,
-//         },
-//     },
-// }
-// const letter = {
-//     hidden: { opacity: 0, y: 50 },
-//     visible: {
-//         opacity: 1,
-//         y: 0
-//     }
-// }
+
 const Home = () => {
+    const handleDown=(e)=>{ 
+        e.preventDefault();
+        window.location.href='#about';
+    }
     return (
-        <motion.section  exit={{ opacity: 0 }} id="home">
-            <Carousel stopOnHover={false} showIndicators={false} showStatus={false} showThumbs={false} showArrows={false} className="relative w-full h-screen bg-transparent" infiniteLoop={false} autoPlay={true} emulateTouch={true} swipeable={true} interval={6000} transitionTime={500}>
+        <motion.section  exit={{ opacity: 0 }} id="home" className="relative">
+            <Carousel stopOnHover={false} showIndicators={true} showStatus={false} showThumbs={false} showArrows={false} className="relative w-full h-screen bg-transparent" infiniteLoop={false} autoPlay={true} emulateTouch={true} swipeable={true} interval={6000} transitionTime={500}>
                 <div className="absolute grid w-full h-screen text-gray-100 lg:grid-cols-2 lg:gap-1">
                     <div className="flex flex-col items-center justify-center ">
                         <FadeInWhenVisible once={false} delay={0}><h1 className="p-4 mt-12 text-5xl font-bold tracking-widest uppercase lg:text-7xl lg:mt-0">LEAD</h1></FadeInWhenVisible>
@@ -53,7 +39,6 @@ const Home = () => {
                     <FadeInWhenVisible once={false} delay={2}><p className="hidden p-8 font-light leading-8 tracking-widest lg:visible">We aim to provide the perfect platform for the deserving candidates. So that they can refine their skills and prove to be an asset to the development of the company. This is the great contribution of the people towards the growth in the economy of the country. We tend to give sufficient employment opportunities to the people. Our way of working is quite outstanding and we take quick decisions.</p></FadeInWhenVisible>
                     </div>
                 </div>
-                
             </Carousel>
             {/* <Particles
                 params={particle}
@@ -65,7 +50,13 @@ const Home = () => {
                 <span data-disabled="true" data-color="#2AD37A">SWITCH</span>
                 <span data-disabled="true" data-color="#2AD37A">SWITCH</span>
             </div> */}
-
+            <div className="flex justify-center items-center">
+            <motion.img  
+                initial="hidden"
+                whileInView="visible"
+                transition={{ delay: 10 , duration: 1 }} src={downArrow} className="cursor-pointer absolute w-8 h-8 p-2 text-white bg-transparent border-2 border-white rounded-full bottom-12 hover:border" onClick={handleDown} alt="Down arrow" /> 
+            </div>
+                
         </motion.section>
     )
 }

@@ -9,22 +9,31 @@ import bpo from '../assets/bpo.svg';
 import staff from '../assets/staff.svg';
 import FadeInWhenVisible from './common/FadeInWhenVisible';
 import GradientContainer from './common/GradientContainer';
+import star from '../assets/star.png';
 // import Particles from 'react-tsparticles';
 // import particle from '../particles/particles.json'
 
 function Card({ title, description, img, index }) {
   return (
     <FadeInWhenVisible delay={0}>
-      <GradientContainer index={index}>
-        <div className="flex flex-col justify-center p-4 lg:pl-8">
-          <span className="block p-2 mb-4 text-xl tracking-wider uppercase lg:text-2xl">{title}</span>
-          <span className="p-2 text-sm font-light leading-5 tracking-widest text-justify">{description}</span>
+      <div className={`rounded-xl grid grid-cols-1 gap-4 lg:p-0 bg-white text-gray-900`}>
+      <div className="flex items-center justify-center">
+          <img src={img} alt={title} className="h-48 lg:h-72" />
+        </div>
+        <div className="flex flex-col justify-center p-2 lg:pl-8 border-t border-gray-200 px-4">
+          <span className="block mb-4 text-xl uppercase lg:text-2xl">{title}</span>
+          <span className="text-sm font-light leading-5 text-justify text-gray-800">{description}</span>
           {/* <a href="#" className="p-2 underline font-extralight underline-offset-4">View more</a> */}
         </div>
-        <div className="flex items-center justify-center">
-          <img src={img} alt={title} className="h-48 p-4 lg:h-72" />
+        <div className="p-4 lg:pl-8 border-t border-gray-200">
+          <span>Client Rating: </span>
+          <img src={star} className="w-4 h-4 inline mx-1"/>
+          <img src={star} className="w-4 h-4 inline mx-1"/>
+          <img src={star} className="w-4 h-4 inline mx-1"/>
+          <img src={star} className="w-4 h-4 inline mx-1"/>
+          <img src={star} className="w-4 h-4 inline mx-1"/>
         </div>
-      </GradientContainer>
+        </div>
     </FadeInWhenVisible>
   );
 }
@@ -32,38 +41,38 @@ function Card({ title, description, img, index }) {
 const Service = () => {
   const services = [
     {
-      title: 'IT Staffing',
+      title: 'Web Development',
       description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
       img: staff,
 
     },
     {
-      title: 'Automation',
-      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      title: 'Kronos Consulting',
+      description: 'simplifies the tedious tasks involved with monitoring employee time and attendance, labor tracking, and data collection. It is one of the most reliable and majorly used workforce management tool in the companies.',
       img: analytics,
 
     },
     {
-      title: 'Technology Consulting',
-      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      title: 'Python Development',
+      description: 'Python is one of the most powerful programming language. Being a powerful programming language most of the website applications are developed on it. It is also known and majorly used for being one of the secured programming language in the IT sector.',
       img: consulting,
 
     },
     {
-      title: 'End-to-end Application Services',
-      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      title: 'Oracle/ERP Consulting',
+      description: 'Enterprise Resource Planning training is an essential and vital part of maintenance for the technical experts. To raise the company to the expected heights the basic efforts play a significant role.',
       img: appService,
 
     },
     {
-      title: 'Systems integration',
-      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      title: 'QA Automation Testing',
+      description: 'Automation Testing is done for assuring the quality of the software. It saves most of the time by automating. You will get the accuracy in the testing process. In manual testing, the individual has to be physically.',
       img: integration,
 
     },
     {
-      title: 'Business process outsourcing',
-      description: 'Web development is the result of the most innovative and creative minds. Also, it plays a major role in growing the business online. Today, many IT companies in the market are providing training services in this particular area.',
+      title: 'ETL / DBA Management',
+      description: 'The database management is the vital responsibility of the organization. The company should have the assurance and security check for database security. It is the primary duty and responsibility of the company.',
       img: bpo,
 
     }
@@ -74,7 +83,7 @@ const Service = () => {
 
       <div className="w-11/12 m-auto lg:w-8/12">
         <h1 className="p-4 text-3xl tracking-widest text-center text-white uppercase border-t border-b border-gray-700">Services</h1>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {services.length > 0 && services.map((service, index) => (
           <Card title={service.title} key={service.title} img={service.img} description={service.description} index={index} />
         ))}

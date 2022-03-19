@@ -8,11 +8,11 @@ body {
 }
 
 button {
-  @apply z-40 p-2 px-4 m-2 font-light tracking-widest text-white uppercase border-0 rounded-md shadow-lg outline-none cursor-pointer bg-primary-600;
+  @apply z-40 p-2 px-4 m-2 font-light tracking-widest text-white uppercase border-0 rounded-lg shadow-lg outline-none cursor-pointer bg-primary-600 hover:bg-primary-800;
 }
 input,
 textarea {
-  @apply w-full p-1 m-2 border border-gray-300 outline-none lg:p-2;
+  @apply w-full p-1 m-2 border border-gray-300 outline-none lg:p-2 rounded-md;
 }
 .blueGradient {
   /* @apply from-blue-800 via-blue-600 to-blue-400; */

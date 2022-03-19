@@ -5,15 +5,17 @@ import {
     Marker,
 } from "react-google-maps";
 
-const Maps = withScriptjs(withGoogleMap(props =>
+const Maps = withScriptjs(withGoogleMap(props =>{
+    console.log(props);
+    return(
     <GoogleMap
-        defaultZoom={10}
-        defaultCenter={{ lat: -34.397, lng: 150.644 }}
+        defaultZoom={15}
+        defaultCenter={{ lat: props.lat, lng: props.lng }}
     >
         <Marker
-            position={{ lat: -34.397, lng: 150.644 }}
+            position={{ lat: props.lat, lng: props.lng }}
         />
-    </GoogleMap>
-));
+    </GoogleMap>)
+}));
 
 export default Maps;

@@ -8,9 +8,9 @@ import whatsappIcon from '../assets/whatsapp.svg'
 import mailIcon from '../assets/mail.svg'
 
 const tabs = [
-    { city: 'Indore', contact: '+91 9757247020', label: 'India', address: `405, Apollo Premier, Vijay Nagar Square, |Indore, Madhya Pradesh 452010 , |India` },
-    { city: 'New York', contact: '+91 9757247020', label: 'USA', address: `99 Wall Street Suite 4449|New York, NY 10005|United States` },
-    { city: 'Abu Dhabi', contact: '+91 9757247020', label: 'UAE', address: `Coming soon` }
+    { city: 'Indore', contact: '+91 9757247020', lat:22.750094311700593, lng:75.89677610133681, label: 'India', address: `405, Apollo Premier, Vijay Nagar Square, |Indore, Madhya Pradesh 452010 , |India` },
+    { city: 'New York', contact: '+91 9757247020',lat:40.70494693665208, lng:-74.00725133672444,  label: 'USA', address: `99 Wall Street Suite 4449|New York, NY 10005|United States` },
+    // { city: 'Abu Dhabi', contact: '+91 9757247020', label: 'UAE', address: `Coming soon` }
 ]
 const Contact = () => {
 

@@ -17,7 +17,7 @@ const SharedLayout = ({ tabs }) => {
     return (
         <div className="text-gray-100 bg-transparent sharedLayout-window">
             <nav>
-                <ul className="grid grid-cols-3 text-center">
+                <ul className="grid grid-cols-2 text-center">
                     {tabs.map((item) => (
                         <li
                             key={item.label}
@@ -45,6 +45,8 @@ const SharedLayout = ({ tabs }) => {
                         {selectedTab && <div className="grid w-full h-full grid-rows-3 p-2">
                             <div className="row-span-2">
                                 <Maps
+                                    lat={selectedTab.lat}
+                                    lng={selectedTab.lng}
                                     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
                                     loadingElement={<div style={{ height: `100%`, width: "100%" }} />}
                                     containerElement={<div style={{ height: `100%`, width: '100%' }} />}
@@ -52,7 +54,7 @@ const SharedLayout = ({ tabs }) => {
                                 />
                             </div>
                             <div className="row-span-1">
-                                <div className="px-4 pt-4 pb-2 text-2xl tracking-wider uppercase">{selectedTab.city}</div>
+                                <div className="px-4 pt-4 pb-2 text-2xl tracking-wider uppercase min-h-32">{selectedTab.city}</div>
                                 {addressLayout(selectedTab.address)}
                                 {contactLayout(selectedTab.contact)}
                             </div>
