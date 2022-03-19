@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 // import Particles from 'react-tsparticles';
 // import particle from '../particles/particles.json'
 
-const Career = () => {
+const Career = ({setShowToast}) => {
     const [data, setData] = useState({
-        fullName:'',
+        fullName: '',
         email: '',
         phone: '',
         file: null,
@@ -29,16 +29,25 @@ const Career = () => {
 
     const submitForm = async () => {
         let newError = {}
-        if (data.fullName === '') newError.fullName = 1;
-        if (data.email === '') newError.email = 1;
-        if (data.phone === '') newError.phone = 1;
-        if (data.information === '') newError.information = 1;
-        setError(newError)
-        // let attachment = {
-        //     name: 'Resume',
-        //     pathname: data.file
-        // }
-        //sendEmail("Dwellfox", JSON.stringify(data), attachment)
+        let hasError = false;
+        if (data.fullName === '') {
+            newError.fullName = 1; hasError = true;
+        }
+        if (data.email === '') {
+            newError.email = 1; hasError = true;
+        }
+        if (data.phone === '') {
+            newError.phone = 1; hasError = true;
+        }
+        if (data.information === '') {
+            newError.information = 1; hasError = true;
+        }
+        if (hasError) {
+            setError(newError)
+        }
+        else {
+            setShowToast(true)
+        }
     }
     return (
         <>
