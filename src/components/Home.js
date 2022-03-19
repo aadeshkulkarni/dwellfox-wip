@@ -28,8 +28,8 @@ const Home = () => {
                 <div className="grid w-full h-screen text-gray-100 lg:grid-cols-2 lg:gap-1">
                     <div className="flex flex-col items-center justify-center">
                     <FadeInWhenVisible once={false} delay={0}><h1 className="mt-12 mb-4 text-4xl font-bold tracking-widest uppercase lg:text-5xl lg:mt-0">You're an expert.</h1></FadeInWhenVisible>
-                    <FadeInWhenVisible once={false} delay={1}> <h1 className="mt-8 mb-4 text-4xl font-bold tracking-widest uppercase lg:text-5xl lg:mt-0">So are we</h1></FadeInWhenVisible>
-                    <FadeInWhenVisible once={false} delay={2}><p className="p-4 font-light leading-8 tracking-widest">Find a top quality, specialized consultant today</p></FadeInWhenVisible>
+                    <FadeInWhenVisible once={false} delay={1}><h1 className="mt-8 mb-4 text-4xl font-bold tracking-widest uppercase lg:text-5xl lg:mt-0">So are we</h1></FadeInWhenVisible>
+                    <FadeInWhenVisible once={false} delay={1}><h1 className="p-4 font-light leading-8 tracking-widest text-md">Find a top quality, specialized consultant today</h1></FadeInWhenVisible>
                     </div>
                 </div>
                 <div className="grid w-full h-screen text-gray-100 lg:grid-cols-2 lg:gap-1">
@@ -40,21 +40,11 @@ const Home = () => {
                     </div>
                 </div>
             </Carousel>
-            {/* <Particles
-                params={particle}
-            /> */}
-            {/* <div className="hidden triggers">
-                <span data-disabled="true" data-color="#3D8CD0">CLICK</span>
-                <span data-disabled="true" data-color="#D32A7B">TO</span>
-                <span data-disabled="true" data-color="#2AD37A">SWITCH</span>
-                <span data-disabled="true" data-color="#2AD37A">SWITCH</span>
-                <span data-disabled="true" data-color="#2AD37A">SWITCH</span>
-            </div> */}
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
             <motion.img  
                 initial="hidden"
                 whileInView="visible"
-                transition={{ delay: 10 , duration: 1 }} src={downArrow} className="cursor-pointer absolute w-8 h-8 p-2 text-white bg-transparent border-2 border-white rounded-full bottom-12 hover:border" onClick={handleDown} alt="Down arrow" /> 
+                transition={{ delay: 10 , duration: 1 }} src={downArrow} className="absolute w-8 h-8 p-2 text-white bg-transparent border-2 border-white rounded-full cursor-pointer bottom-16 lg:bottom-12 hover:border" onClick={handleDown} alt="Down arrow" /> 
             </div>
                 
         </motion.section>

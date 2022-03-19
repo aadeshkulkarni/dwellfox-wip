@@ -26,13 +26,15 @@ const Contact = () => {
         subject: 0,
         message: 0
     })
-    const inputChanged = (e) => {
+    const inputChanged =(e) => {
         const name = e.target.name;
         const value = e.target.value;
+        
         if (e.target.value !== '') {
             setError({ ...error, [name]: 0 })
         }
         setData({ ...data, [name]: value })
+        
     }
 
     const submitForm = async () => {
@@ -42,15 +44,6 @@ const Contact = () => {
         if (data.subject === '') newError.subject = 1;
         if (data.message === '') newError.message = 1;
         setError(newError)
-        // const response = await fetch('http://localhost:4000/api/contactForm', {
-        //     method: 'POST',
-        //     mode: 'cors',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // });
-        // console.log(response.json());
     }
     return (
         <motion.section className="pt-16 bg-gray-900 bg-opacity-50" exit={{ opacity: 0 }} id="contact">
@@ -64,7 +57,7 @@ const Contact = () => {
                     <SharedLayout tabs={tabs} />
                 </div>
 
-                <div className="flex flex-col items-center justify-center lg:p-2">
+                <div className="flex flex-col items-center justify-center text-gray-900 lg:p-2">
                     <h1 className="text-xl tracking-widest text-white">Let's get in touch</h1>
                     <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                         <label className="px-2 text-white">Name</label>

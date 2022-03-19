@@ -172,7 +172,6 @@ function execute3DCode(canvasDOM) {
         }
     }
     function changeShape() {
-        // console.log(index)
         if(index % 2 ===1){
             morphTo(transitionShape.particles,'#488FB1')
         }

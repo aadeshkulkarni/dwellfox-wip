@@ -5,7 +5,6 @@ import Maps from '../../utils/Maps'
 const API_KEY = 'AIzaSyBYNCambdq0zMxd9OkU0n6LVTM9Rgxunew'
 
 const SharedLayout = ({ tabs }) => {
-    console.log(tabs);
     const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
     const addressLayout = (address) => (<div className="p-4 text-sm font-extralight">

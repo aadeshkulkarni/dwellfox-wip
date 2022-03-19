@@ -59,22 +59,22 @@ const Career = () => {
                         <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                             <label className="px-2 text-white">Full Name</label>
                             <input name='fullName' autocomplete="off" onChange={inputChanged} value={data.firstName} />
-                            {error.name && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* First name is mandatory</label>}
+                            {error.name ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* First name is mandatory</label> : ""}
                         </div>
                         <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                             <label className="px-2 text-white">E-mail</label>
                             <input name='email' autocomplete="off" onChange={inputChanged} value={data.email} />
-                            {error.email && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* email is mandatory</label>}
+                            {error.email ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* email is mandatory</label> : ""}
                         </div>
                         <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                             <label className="px-2 text-white">Phone</label>
                             <input name='phone' autocomplete="off" onChange={inputChanged} value={data.phone} />
-                            {error.phone && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Phone is mandatory</label>}
+                            {error.phone ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Phone is mandatory</label> : ""}
                         </div>
                         <div className="flex flex-col w-4/5 pt-2 lg:w-3/5">
                             <label className="px-2 text-white">Document upload</label>
                             <input name='file' onChange={(e) => { setData({ ...data, file: e.target.files[0] }) }} className="w-full p-3 my-2 tracking-wide text-white border border-gray-300 rounded-sm outline-none text-md" type="file" />
-                            {error.file && <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Document is mandatory</label>}
+                            {error.file ? <label className="p-2 pt-1 pb-4 text-xs font-light text-red-500">* Document is mandatory</label> : ""}
                         </div>
                         <div className="grid w-4/5 grid-cols-1 lg:w-3/5 lg:gap-4 lg:grid-cols-1">
                             <label className="px-2 text-white">Additional Information</label>

@@ -6,7 +6,6 @@ import {
 } from "react-google-maps";
 
 const Maps = withScriptjs(withGoogleMap(props =>{
-    console.log(props);
     return(
     <GoogleMap
         defaultZoom={15}
