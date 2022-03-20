@@ -44,7 +44,7 @@ const Home = () => {
             <motion.img  
                 initial="hidden"
                 whileInView="visible"
-                transition={{ delay: 10 , duration: 1 }} src={downArrow} className="absolute w-8 h-8 p-2 text-white bg-transparent border-2 border-white rounded-full cursor-pointer bottom-24 lg:bottom:12 hover:border" onClick={handleDown} alt="Down arrow" /> 
+                transition={{ delay: 10 , duration: 1 }} src={downArrow} className="absolute w-8 h-8 p-2 text-white bg-transparent border-2 border-white rounded-full cursor-pointer bottom-16 lg:bottom:16 hover:border" onClick={handleDown} alt="Down arrow" /> 
             </div>
                 
         </motion.section>

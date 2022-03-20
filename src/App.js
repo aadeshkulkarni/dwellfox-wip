@@ -29,7 +29,7 @@ function App() {
     {splash ? <Splashscreen setSplash={setSplash}/>:
     <>
     { showToast ? <Toast show={showToast} setShowToast={setShowToast}/>:''}
-    <div ref={canvasRef} className="absolute top-0 left-0" id="shapes"></div>
+    {!splash && <div ref={canvasRef} className="absolute top-0 left-0" id="shapes"></div>}
     
       {/* <Router> */}
       <div className="absolute top-0 left-0 z-10 w-full"  >

@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.blue,
+        primary: colors.cyan,
         secondary: colors.yellow,
         neutral: colors.gray,
         white: colors.white

@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { TweenMax, Linear, Elastic } from 'gsap'
 import GeometryUtils from "./GeometryUtils";
 let index = 0;
+let INTERSECTED = 0;
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 function onPointerMove(event) {
@@ -144,8 +145,10 @@ function execute3DCode(canvasDOM) {
         color: color,
         rotation: 100
     }
+    const axesHelper = new THREE.AxesHelper(5);
+    scene.add(axesHelper);
     function animate() {
-        
+
         if (index % 2 === 1) {
             particleSystem.rotation.y += animationVars.speed;
         }
@@ -156,21 +159,18 @@ function execute3DCode(canvasDOM) {
             camera.position.z = animationVars.rotation;
             camera.position.y = animationVars.rotation;
         }
-
         camera.lookAt(scene.position.x - 20, scene.position.y - 20, scene.position.z);
-        particles.verticesNeedUpdate = true;
-
-        particleSystem.material.color = new THREE.Color(animationVars.color);
-        // update the picking ray with the camera and pointer position
+        camera.updateMatrixWorld();
         raycaster.setFromCamera(pointer, camera);
+        particles.verticesNeedUpdate = true;
+        
+        particleSystem.material.color = new THREE.Color(animationVars.color);
         
         // calculate objects intersecting the picking ray
-        const intersects = raycaster.intersectObjects(scene.children,true);
-        
+        const intersects = raycaster.intersectObjects(scene.children, false);
         for (let i = 0; i < intersects.length; i++) {
             intersects[i].object.material.color.set(0x00ffff);
         }
-
         window.requestAnimationFrame(animate);
         renderer.render(scene, camera);
     }
@@ -218,7 +218,7 @@ function execute3DCode(canvasDOM) {
     }
 
     window.addEventListener('resize', fullScreen, false)
-    window.addEventListener( 'pointermove', onPointerMove );
+    window.addEventListener('pointermove', onPointerMove);
 
     // function explodeIntoParticles(){
     //     morphTo(transitionShape.particles,'#488FB1');
