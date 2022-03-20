@@ -145,8 +145,8 @@ function execute3DCode(canvasDOM) {
         color: color,
         rotation: 100
     }
-    const axesHelper = new THREE.AxesHelper(5);
-    scene.add(axesHelper);
+    // const axesHelper = new THREE.AxesHelper(5);
+    // scene.add(axesHelper);
     function animate() {
 
         if (index % 2 === 1) {
@@ -165,7 +165,7 @@ function execute3DCode(canvasDOM) {
         particles.verticesNeedUpdate = true;
         
         particleSystem.material.color = new THREE.Color(animationVars.color);
-        
+
         // calculate objects intersecting the picking ray
         const intersects = raycaster.intersectObjects(scene.children, false);
         for (let i = 0; i < intersects.length; i++) {
